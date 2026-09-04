@@ -298,11 +298,18 @@ a:hover { color: var(--terracotta); }
   color: var(--ink);
 }
 
+.card .card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
 .card .card-title {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 28px;
-  margin-bottom: 8px;
 }
 
 .card .card-sub { font-size: 14px; color: var(--muted); line-height: 1.5; }
@@ -396,6 +403,55 @@ a:hover { color: var(--terracotta); }
   margin: 0 0 14px;
 }
 .info-card p { font-size: 15px; line-height: 1.7; color: var(--body); margin: 0; }
+
+.shuttle-banner {
+  background: #FFFFFF;
+  border: 2px solid var(--lemon);
+  border-radius: 16px;
+  padding: 40px 36px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.shuttle-banner .banner-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.shuttle-banner .label { font-size: 12px; letter-spacing: 0.2em; font-weight: 700; color: var(--olive); }
+.shuttle-banner h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+.shuttle-banner p { font-size: 15px; line-height: 1.7; color: var(--body); margin: 0 0 16px; }
+.shuttle-banner p:last-of-type { margin-bottom: 0; }
+.shuttle-banner .script-note {
+  font-family: Caveat, cursive;
+  font-size: 24px;
+  color: var(--terracotta);
+  margin-top: 16px;
+  transform: rotate(-1deg);
+}
+@media (max-width: 600px) {
+  .shuttle-banner { grid-template-columns: 1fr; }
+}
+
+.badge-soon {
+  background: #FFF6D8;
+  border: 1px solid var(--lemon);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: #8A6410;
+}
 
 .stay-band { background: var(--sand); border-radius: 16px; padding: 44px 40px; margin-top: 20px; text-align: center; }
 .stay-band h2 {
@@ -555,6 +611,155 @@ a:hover { color: var(--terracotta); }
 .faq-item:last-child { border-bottom: none; }
 .faq-item .q { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
 .faq-item .a { font-size: 15px; line-height: 1.7; color: var(--body); }
+
+/* ---------- Our Story timeline ---------- */
+
+.story-timeline {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 32px 80px;
+  position: relative;
+}
+
+.story-timeline .line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(var(--cream), var(--hairline) 8%, var(--hairline) 92%, var(--cream));
+  transform: translateX(-1px);
+}
+
+.story-rows { display: flex; flex-direction: column; gap: 56px; position: relative; }
+
+.story-row {
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: center;
+}
+
+.story-row .dot-cell { display: flex; justify-content: center; }
+.story-row .dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--lemon);
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--hairline);
+}
+.story-row .dot.terracotta { background: var(--terracotta); }
+
+.story-row .story-photo {
+  background: #FFFFFF;
+  padding: 12px 12px 16px;
+  border-radius: 6px;
+  box-shadow: 0 16px 40px rgba(46, 58, 34, 0.16);
+}
+.story-row .story-photo img { width: 100%; display: block; border-radius: 2px; }
+
+.story-row .story-text { padding-left: 8px; }
+.story-row .story-text.right { padding-left: 0; padding-right: 8px; text-align: right; }
+
+.story-row .label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--olive);
+  margin-bottom: 8px;
+}
+.story-row .label.terracotta { color: var(--terracotta); }
+
+.story-row h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.story-row p { font-size: 15px; line-height: 1.7; color: var(--body); margin: 0 0 14px; }
+.story-row p:last-child { margin-bottom: 0; }
+
+.story-notes { display: flex; flex-direction: column; gap: 10px; }
+.story-notes.right { align-items: flex-end; }
+
+.note {
+  font-family: Caveat, cursive;
+  font-size: 26px;
+  line-height: 1.35;
+  max-width: 360px;
+}
+.note.shirley { color: #C2557F; }
+.note.daniel { color: #3D6E9E; }
+.note.tilt-l { transform: rotate(-1.2deg); }
+.note.tilt-r { transform: rotate(1.2deg); }
+
+@media (max-width: 760px) {
+  .story-timeline .line { display: none; }
+  .story-row { grid-template-columns: 1fr; gap: 18px; }
+  .story-row .dot-cell { display: none; }
+  .story-row .story-text.right { text-align: left; padding-right: 0; }
+  .story-notes.right { align-items: flex-start; }
+  .story-row .story-photo { order: -1; }
+}
+
+.story-cta { text-align: center; padding: 0 32px 72px; }
+
+/* ---------- Our People ---------- */
+
+.people-section { max-width: 1080px; margin: 0 auto; padding: 32px 32px 24px; }
+.people-section.tight-top { padding-top: 48px; }
+
+.section-head { text-align: center; margin-bottom: 28px; }
+.section-head .label {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--olive);
+  margin-bottom: 10px;
+}
+.section-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 38px;
+  margin: 0;
+}
+.section-head p { font-size: 15px; line-height: 1.7; color: var(--body); max-width: 480px; margin: 12px auto 0; }
+
+.families-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.families-grid .polaroid img { height: 300px; object-fit: cover; }
+
+.party-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.party-member { text-align: center; }
+.party-member .circle {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--sand);
+  border: 2px dashed var(--hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Caveat, cursive;
+  font-size: 22px;
+  color: #A9A085;
+}
+.party-member .role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 14px;
+}
+
+.page-head .intro { font-size: 16px; line-height: 1.75; color: var(--body); max-width: 540px; margin: 24px auto 0; }
 
 /* ---------- Footer ---------- */
 
