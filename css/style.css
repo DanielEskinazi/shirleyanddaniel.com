@@ -552,6 +552,23 @@ a:hover { color: var(--terracotta); }
   .gallery-grid img.wide { grid-column: auto; }
 }
 
+.masonry {
+  columns: 3;
+  column-gap: 16px;
+}
+.masonry img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  break-inside: avoid;
+  box-shadow: 0 8px 22px rgba(46, 58, 34, 0.12);
+  transition: transform 0.25s;
+}
+.masonry img:hover { transform: scale(1.02) rotate(-0.6deg); }
+@media (max-width: 960px) { .masonry { columns: 2; } }
+@media (max-width: 600px) { .masonry { columns: 1; } }
+
 .band { background: var(--sand); text-align: center; padding: 88px 32px; }
 .band h2 {
   font-family: 'Cormorant Garamond', serif;
