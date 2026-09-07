@@ -531,6 +531,7 @@ a:hover { color: var(--terracotta); }
   padding: 0 32px 80px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
   gap: 16px;
 }
 
