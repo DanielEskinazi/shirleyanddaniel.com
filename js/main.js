@@ -24,6 +24,19 @@
   setInterval(tick, 1000);
 })();
 
+// Story photo carousel (our story page)
+(function () {
+  document.querySelectorAll('.story-carousel').forEach(function (carousel) {
+    var track = carousel.querySelector('.carousel-track');
+    carousel.querySelectorAll('.carousel-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dir = btn.classList.contains('next') ? 1 : -1;
+        track.scrollBy({ left: dir * track.clientWidth * 0.8, behavior: 'smooth' });
+      });
+    });
+  });
+})();
+
 // Drive-time map origin selector (travel page)
 (function () {
   var map = document.getElementById('drive-map');
