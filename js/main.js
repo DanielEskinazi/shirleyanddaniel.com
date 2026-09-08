@@ -1,3 +1,14 @@
+// Mobile nav toggle (all pages)
+(function () {
+  var nav = document.querySelector('.nav');
+  var toggle = document.querySelector('.nav-toggle');
+  if (!nav || !toggle) return;
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+})();
+
 // Countdown to the ceremony (home page)
 (function () {
   var el = document.getElementById('countdown');
