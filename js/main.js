@@ -9,6 +9,47 @@
   });
 })();
 
+// Lightbox for gallery and carousel photos
+(function () {
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('.masonry img, .carousel-track img'));
+  if (!imgs.length) return;
+  var box = document.createElement('div');
+  box.className = 'lightbox';
+  box.innerHTML =
+    '<button class="lightbox-btn prev" aria-label="Previous photo">&larr;</button>' +
+    '<img alt="">' +
+    '<button class="lightbox-btn next" aria-label="Next photo">&rarr;</button>' +
+    '<button class="lightbox-btn lightbox-close" aria-label="Close">&times;</button>';
+  document.body.appendChild(box);
+  var pic = box.querySelector('img');
+  var current = -1;
+  function show(i) {
+    current = (i + imgs.length) % imgs.length;
+    pic.src = imgs[current].src;
+    pic.alt = imgs[current].alt;
+    box.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    box.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  imgs.forEach(function (img, i) {
+    img.addEventListener('click', function () { show(i); });
+  });
+  box.querySelector('.prev').addEventListener('click', function (e) { e.stopPropagation(); show(current - 1); });
+  box.querySelector('.next').addEventListener('click', function (e) { e.stopPropagation(); show(current + 1); });
+  box.addEventListener('click', function (e) {
+    if (e.target === box || e.target.classList.contains('lightbox-close')) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!box.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(current - 1);
+    else if (e.key === 'ArrowRight') show(current + 1);
+  });
+})();
+
 // Countdown to the ceremony (home page)
 (function () {
   var el = document.getElementById('countdown');

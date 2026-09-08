@@ -914,6 +914,59 @@ a:hover { color: var(--terracotta); }
 
 .page-head .intro { font-size: 16px; line-height: 1.75; color: var(--body); max-width: 540px; margin: 24px auto 0; }
 
+/* ---------- Lightbox ---------- */
+
+.masonry img, .carousel-track img { cursor: pointer; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(46, 58, 34, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.lightbox.open { opacity: 1; pointer-events: auto; }
+
+.lightbox img {
+  max-width: 92vw;
+  max-height: 86vh;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
+  background: rgba(250, 246, 235, 0.95);
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+.lightbox-btn:hover { background: var(--lemon); }
+.lightbox-btn.prev { left: 12px; }
+.lightbox-btn.next { right: 12px; }
+.lightbox-btn.lightbox-close {
+  top: 14px;
+  right: 14px;
+  transform: none;
+  font-size: 24px;
+}
+
 /* ---------- Footer ---------- */
 
 .footer { background: var(--ink); color: var(--sand); text-align: center; padding: 64px 24px; }
